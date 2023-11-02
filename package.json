@@ -1,0 +1,19 @@
+{
+  "name": "thinkspace",
+  "version": "1.0.0",
+  "description": "A blog application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eloagbawe/thinkspace.git"
+  },
+  "author": "Elo Agbawe Idiodi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eloagbawe/thinkspace/issues"
+  },
+  "homepage": "https://github.com/Eloagbawe/thinkspace#readme"
+}
