@@ -15,9 +15,7 @@ module.exports = (sequelize: any, DataTypes:any ) => {
 
     static associate(models: any) {
       Blog.belongsTo(models.User)
-      Blog.belongsToMany(models.Comment, {
-        through: 'BlogComments'
-      })
+      Blog.hasMany(models.Comment)
     }
   }
   Blog.init({

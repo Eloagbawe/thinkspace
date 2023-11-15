@@ -6,6 +6,9 @@ interface UserAttributes {
   username: string;
   email: string;
   password: string;
+  first_name: string;
+  last_name: string;
+  profile_picture_url: string;
 };
 
 module.exports = (sequelize: any, DataTypes:any ) => {
@@ -14,10 +17,13 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     username!: string;
     email!: string;
     password!: string;
+    first_name!: string;
+    last_name!: string;
+    profile_picture_url!: string;
 
     static associate(models: any) {
-      User.hasMany(models.Comment)
       User.hasMany(models.Blog)
+      User.hasMany(models.Comment)
     }
   }
   User.init({
@@ -38,6 +44,18 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    profile_picture_url: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     sequelize,
