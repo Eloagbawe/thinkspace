@@ -1,9 +1,10 @@
 import express, { Express, Request, Response } from 'express';
 import Colors = require('colors.ts');
 import dotenv from 'dotenv';
+import errorHandler from './src/middleware/error';
 dotenv.config();
 
-import sequelizeConnection from './src/config/db';
+import db from './src/models';
 
 Colors.enable();
 
@@ -15,7 +16,7 @@ app.get('/', (req: Request, res: Response) => {
 
 const connectSequelize = async () => {
   try {
-    await sequelizeConnection.authenticate()
+    await db.sequelize.authenticate()
     console.log('Connection has been established successfully.'.green);
   } catch (err) {
     console.error('Unable to connect to the database: ', err);
@@ -23,4 +24,13 @@ const connectSequelize = async () => {
 }
 
 connectSequelize();
+
+db.sequelize.sync().then(() => {
+  console.log('tables created successfully')
+}).catch((err: Error) => {
+  console.error('Unable to create database tables: ', err);
+})
+
+app.use(errorHandler);
+
 export default app
