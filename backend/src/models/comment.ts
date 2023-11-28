@@ -1,10 +1,6 @@
 'use strict';
 import { Model } from 'sequelize';
-
-interface CommentAttributes {
-  id: string;
-  content: string;
-};
+import { CommentAttributes } from '../interfaces';
 
 module.exports = (sequelize: any, DataTypes:any ) => {
   class Comment extends Model <CommentAttributes> implements CommentAttributes{

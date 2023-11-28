@@ -1,11 +1,6 @@
 'use strict';
 import { Model } from 'sequelize';
-
-interface BlogAttributes {
-  id: string;
-  title: string;
-  content: string;
-};
+import { BlogAttributes } from '../interfaces';
 
 module.exports = (sequelize: any, DataTypes:any ) => {
   class Blog extends Model <BlogAttributes> implements BlogAttributes{
