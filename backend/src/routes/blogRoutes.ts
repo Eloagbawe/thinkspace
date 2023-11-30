@@ -1,6 +1,6 @@
 import express from 'express';
 import { isAuth } from '../middleware/auth';
-import blogController from '../controllers/blogController';
+import { blogController } from '../controllers';
 
 const router = express.Router();
 

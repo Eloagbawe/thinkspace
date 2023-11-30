@@ -1,6 +1,7 @@
 import express from 'express';
-import authController from '../controllers/authController';
+import { authController } from '../controllers';
 import { passportAuth } from '../middleware/auth';
+
 const router = express.Router();
 
 router.post('/signup', authController.signUp);

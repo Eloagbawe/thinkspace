@@ -1,6 +1,6 @@
 import express from 'express';
 import { isAuth } from '../middleware/auth';
-import userController from '../controllers/userController';
+import { userController } from '../controllers';
 
 const router = express.Router();
 

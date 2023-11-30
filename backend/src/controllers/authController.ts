@@ -51,4 +51,4 @@ const logout = asyncHandler(async (req: Request, res: Response) => {
   });
 })
 
-export default { signUp, login, logout };
+export const authController = { signUp, login, logout };

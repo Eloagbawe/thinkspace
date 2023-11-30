@@ -26,4 +26,4 @@ const updateProfile = asyncHandler(async (req: Request, res: Response) => {
   }
 })
 
-export default { getMe, updateProfile };
+export const userController = { getMe, updateProfile };

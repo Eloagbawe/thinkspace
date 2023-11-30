@@ -1,6 +1,4 @@
-import * as authController from './authController';
-import * as userController from './userController';
-import * as blogController from './blogController';
+export * from './authController';
+export * from './userController';
+export * from './blogController'
 
-
-export { authController, userController, blogController };

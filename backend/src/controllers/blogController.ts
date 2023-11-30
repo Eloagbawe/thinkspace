@@ -58,4 +58,4 @@ const getUserBlogs = asyncHandler(async(req: Request, res: Response) => {
   }
 })
 
-export default { createBlog, getBlogs, getUserBlogs }
+export const blogController = { createBlog, getBlogs, getUserBlogs }
