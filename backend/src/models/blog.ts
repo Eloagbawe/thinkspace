@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 import { Model } from 'sequelize';
 import { BlogAttributes } from '../interfaces';
 
-module.exports = (sequelize: any, DataTypes:any ) => {
+module.exports = (sequelize: any, DataTypes: any ) => {
   class Blog extends Model <BlogAttributes> implements BlogAttributes{
     id!: string;
     title!: string;
@@ -17,6 +18,7 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     title: {

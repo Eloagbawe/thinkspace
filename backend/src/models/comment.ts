@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 import { Model } from 'sequelize';
 import { CommentAttributes } from '../interfaces';
@@ -16,6 +17,7 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
     content: {

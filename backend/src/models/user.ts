@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 import { Model } from 'sequelize';
 import { UserAttributes } from '../interfaces';
