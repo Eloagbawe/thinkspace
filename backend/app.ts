@@ -43,7 +43,7 @@ db.sequelize.sync().then(() => {
 const sessionStore = new SequelizeStore({
   db: db.sequelize,
   checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
-  expiration: 30 * 60 * 1000  // The maximum age (in milliseconds) of a valid session.
+  expiration: 24 * 60 * 60 * 1000  // The maximum age (in milliseconds) of a valid session.
 })
 
 app.use( session({
@@ -52,7 +52,7 @@ app.use( session({
     resave: false,
     saveUninitialized:true,
     cookie: {
-      maxAge: 1000 * 60 * 30
+      maxAge: 1000 * 60 * 60 * 24
     }
   })
 );
@@ -64,6 +64,7 @@ app.use(passport.session());
 
 app.use('/api/v1/users', router.authRouter);
 app.use('/api/v1/users', router.userRouter);
+app.use('/api/v1/blogs', router.blogRouter);
 
 app.use(errorHandler);
 
