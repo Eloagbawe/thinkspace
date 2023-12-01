@@ -46,7 +46,7 @@ const getUserBlogs = asyncHandler(async(req: Request, res: Response) => {
     throw new Error("Please provide user id")
   }
   try {
-    const blogs = await db.Blog.findAll({where: { id },
+    const blogs = await db.Blog.findAll({where: { UserId: id },
       include: [ 
         { model: db.User, attributes: { exclude: ['password']} } 
       ]
@@ -58,4 +58,41 @@ const getUserBlogs = asyncHandler(async(req: Request, res: Response) => {
   }
 })
 
-export const blogController = { createBlog, getBlogs, getUserBlogs }
+const updateBlog = asyncHandler(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const {title, content} = req.body
+
+  if (!id) {
+    res.status(400)
+    throw new Error("Please provide blog id")
+  }
+
+  const blog = await db.Blog.findOne({id});
+
+  if (!blog) {
+    res.status(404)
+    throw new Error("Blog not found")
+  }
+  const loggedInUser: UserAttributes | undefined = req.user;
+
+  if (blog.UserId !== loggedInUser?.id) {
+    res.status(401)
+    throw new Error("Not authorized")
+  }
+
+  try {
+    const fieldsToUpdate = {title, content};
+    await db.Blog.update(fieldsToUpdate, {
+      where: {
+        id: loggedInUser?.id
+      }
+    });
+    res.status(200).json({message: 'blog updated successfully'});
+  } catch (err) {
+    res.status(500)
+    throw new Error("Error updating blog")
+  }
+
+})
+
+export const blogController = { createBlog, getBlogs, getUserBlogs, updateBlog }
