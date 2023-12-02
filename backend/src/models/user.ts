@@ -14,8 +14,12 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     profile_picture_url!: string;
 
     static associate(models: any) {
-      User.hasMany(models.Blog)
-      User.hasMany(models.Comment)
+      User.hasMany(models.Blog, {
+        onDelete: "CASCADE"
+      })
+      User.hasMany(models.Comment, {
+        onDelete: "CASCADE"
+      })
     }
   }
   User.init({
