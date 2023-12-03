@@ -10,9 +10,11 @@ module.exports = (sequelize: any, DataTypes: any ) => {
     content!: string;
 
     static associate(models: any) {
-      Blog.belongsTo(models.User)
+      Blog.belongsTo(models.User, {
+        onDelete: 'CASCADE'
+      })
       Blog.hasMany(models.Comment, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE'
       })
     }
   }

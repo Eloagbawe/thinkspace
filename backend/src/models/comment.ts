@@ -9,8 +9,12 @@ module.exports = (sequelize: any, DataTypes:any ) => {
     content!: string;
 
     static associate(models: any) {
-      Comment.belongsTo(models.User)
-      Comment.belongsTo(models.Blog)
+      Comment.belongsTo(models.User, {
+        onDelete: 'CASCADE'
+      })
+      Comment.belongsTo(models.Blog, {
+        onDelete: 'CASCADE'
+      })
     }
   }
   Comment.init({

@@ -15,10 +15,10 @@ module.exports = (sequelize: any, DataTypes:any ) => {
 
     static associate(models: any) {
       User.hasMany(models.Blog, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       })
       User.hasMany(models.Comment, {
-        onDelete: "CASCADE"
+        onDelete: 'CASCADE',
       })
     }
   }
