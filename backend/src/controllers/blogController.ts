@@ -67,7 +67,9 @@ const updateBlog = asyncHandler(async (req: Request, res: Response) => {
     throw new Error("Please provide blog id")
   }
 
-  const blog = await db.Blog.findOne({id});
+  const blog = await db.Blog.findOne({
+    where: { id }
+  });
 
   if (!blog) {
     res.status(404)
@@ -95,4 +97,36 @@ const updateBlog = asyncHandler(async (req: Request, res: Response) => {
 
 })
 
-export const blogController = { createBlog, getBlogs, getUserBlogs, updateBlog }
+const deleteBlog = asyncHandler(async(req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const blog = await db.Blog.findOne({ 
+    where: { id }
+    });
+
+  if (!blog) {
+    res.status(404)
+    throw new Error("Blog not found")
+  }
+  const loggedInUser: UserAttributes | undefined = req.user;
+
+  if (blog.UserId !== loggedInUser?.id) {
+    res.status(401)
+    throw new Error("Not authorized")
+  }
+
+  try {
+    await db.Blog.destroy({
+      where: {
+        id: blog.id
+      }
+    })
+    res.status(204).send()
+  } catch (err) {
+    res.status(500)
+    throw new Error("Error deleting blog")
+  }
+
+})
+
+export const blogController = { createBlog, getBlogs, getUserBlogs, updateBlog, deleteBlog }

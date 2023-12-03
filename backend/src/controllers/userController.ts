@@ -26,4 +26,31 @@ const updateProfile = asyncHandler(async (req: Request, res: Response) => {
   }
 })
 
-export const userController = { getMe, updateProfile };
+const deleteUser = asyncHandler(async (req: Request, res: Response) => {
+
+  try {
+    const loggedInUser: UserAttributes | undefined = req.user;
+
+    await db.User.destroy({
+      where: {
+        id: loggedInUser?.id
+      }
+    })
+
+    req.logout((err) => {
+      if (err) {
+        res.status(500)
+        throw new Error('A network error occurred')
+      } else {
+        res.status(204).send()
+      }
+    });
+
+  } catch (err) {
+    res.status(500)
+    throw new Error("Error deleting user")
+  }
+
+})
+
+export const userController = { getMe, updateProfile, deleteUser };

@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get('/me', isAuth, userController.getMe);
 router.put('/update', isAuth, userController.updateProfile);
+router.delete('/me', isAuth, userController.deleteUser);
 
 export default router;
