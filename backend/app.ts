@@ -65,7 +65,8 @@ app.use(passport.session());
 app.use('/api/v1/users', router.authRouter);
 app.use('/api/v1/users', router.userRouter);
 app.use('/api/v1/blogs', router.blogRouter);
+app.use('/api/v1/blogs', router.commentRouter);
 
 app.use(errorHandler);
 
-export default app
+export default app;
