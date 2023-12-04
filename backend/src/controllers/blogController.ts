@@ -38,6 +38,26 @@ const getBlogs = asyncHandler(async(req: Request, res: Response) => {
   }
 })
 
+const getBlog = asyncHandler(async(req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const blog = await db.Blog.findOne({
+      where: id,
+      include: [ 
+        { model: db.User, attributes: { exclude: ['password']} },
+        {model: db.Comment}
+      ]
+    });
+    res.status(200).json({success: true, blog});
+
+  } catch (err) {
+    res.status(500)
+    console.log(err)
+    throw new Error("Error fetching blog")
+  }
+})
+
 const getUserBlogs = asyncHandler(async(req: Request, res: Response) => {
   const { id } = req.params;
 
@@ -129,4 +149,4 @@ const deleteBlog = asyncHandler(async(req: Request, res: Response) => {
 
 })
 
-export const blogController = { createBlog, getBlogs, getUserBlogs, updateBlog, deleteBlog }
+export const blogController = { createBlog, getBlogs, getBlog, getUserBlogs, updateBlog, deleteBlog }
