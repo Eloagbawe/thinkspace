@@ -41,7 +41,8 @@ passport.serializeUser((user: UserAttributes, done: (err: Error | null, id?: str
 });
 
 passport.deserializeUser((userId: string, done: (err: any, user?: false | UserAttributes | null | undefined) => void) => {
-  db.User.findByPk(userId, {attributes: { exclude: ['password']}})
+  db.User.findByPk(userId, {attributes: { exclude: ['password']},
+  include: [ { model: db.Blog }, { model: db.Comment }] })
     .then((user: UserAttributes) => {
       done(null, user);
     })
