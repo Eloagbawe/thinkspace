@@ -19,3 +19,8 @@ export interface CommentAttributes {
   id: string;
   content: string;
 }
+
+export interface ReplyAttributes {
+  id: string;
+  content: string;
+}
