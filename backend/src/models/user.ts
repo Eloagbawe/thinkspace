@@ -20,6 +20,9 @@ module.exports = (sequelize: any, DataTypes:any ) => {
       User.hasMany(models.Comment, {
         onDelete: 'CASCADE',
       })
+      User.hasMany(models.Reply, {
+        onDelete: 'CASCADE'
+      })
     }
   }
   User.init({

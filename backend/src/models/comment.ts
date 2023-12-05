@@ -15,6 +15,9 @@ module.exports = (sequelize: any, DataTypes:any ) => {
       Comment.belongsTo(models.Blog, {
         onDelete: 'CASCADE'
       })
+      Comment.hasMany(models.Reply, {
+        onDelete: 'CASCADE'
+      })
     }
   }
   Comment.init({
