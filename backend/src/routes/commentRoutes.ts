@@ -4,9 +4,9 @@ import { commentController } from '../controllers';
 
 const router = express.Router();
 
-router.post('/comments/:blogId', isAuth, commentController.addComment);
-router.get('/:blogId/comments', commentController.getComments);
-router.put('/comments/:commentId', commentController.updateComment);
-router.delete('/comments/:commentId', commentController.deleteComment);
+router.post('/:blogId', isAuth, commentController.addComment);
+router.get('/:blogId', commentController.getComments);
+router.put('/:commentId', commentController.updateComment);
+router.delete('/:commentId', commentController.deleteComment);
 
 export default router;

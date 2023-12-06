@@ -65,7 +65,8 @@ app.use(passport.session());
 app.use('/api/v1/users', router.authRouter);
 app.use('/api/v1/users', router.userRouter);
 app.use('/api/v1/blogs', router.blogRouter);
-app.use('/api/v1/blogs', router.commentRouter);
+app.use('/api/v1/comments', router.commentRouter);
+app.use('/api/v1/replies', router.replyRouter)
 
 app.use(errorHandler);
 
