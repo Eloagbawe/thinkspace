@@ -46,7 +46,7 @@ const getBlog = asyncHandler(async(req: Request, res: Response) => {
       where: id,
       include: [ 
         { model: db.User, attributes: { exclude: ['password']} },
-        {model: db.Comment}
+        { model: db.Comment }
       ]
     });
     res.status(200).json({success: true, blog});

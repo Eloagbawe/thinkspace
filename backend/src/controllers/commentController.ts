@@ -59,8 +59,11 @@ const getComments = asyncHandler(async (req: Request, res: Response) => {
   try {
     const comments = await db.Comment.findAll({
       where: {
-        id: blogId
-      }
+        BlogId: blogId
+      },
+      include: [
+        { model: db.User, attributes: { exclude: ['password']} },
+      ]
     })
 
     res.status(200).json({success: true, comments});
