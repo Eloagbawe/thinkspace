@@ -73,4 +73,79 @@ const getReplies = asyncHandler(async (req: Request, res: Response) => {
   }
 });
 
-export const replyController = { addReply, getReplies };
+const updateReply = asyncHandler(async (req: Request, res: Response) => {
+  const { replyId } = req.params;
+  const { content } = req.body;
+
+  if (!replyId) {
+    res.status(400);
+    throw new Error('Please provide reply id')
+  }
+
+  const reply = await db.Reply.findOne({
+    where: { id: replyId }
+  });
+
+  if (!reply) {
+    res.status(404);
+    throw new Error("Reply not found");
+  }
+
+  const loggedInUser: UserAttributes | undefined = req.user;
+
+  if (reply.UserId !== loggedInUser?.id) {
+    res.status(401)
+    throw new Error("Not authorized")
+  }
+
+  try {
+    await db.Reply.update({content}, {
+      where: {
+        id: reply.id
+      }
+    })
+    res.status(200).json({message: "Reply updated successfully"})
+  } catch(err) {
+    res.status(500)
+    throw new Error("Error updating comment")
+  }
+
+});
+
+const deleteReply = asyncHandler(async (req: Request, res: Response) => {
+  const { replyId } = req.params;
+
+  if (!replyId) {
+    res.status(400);
+    throw new Error('Please provide reply id')
+  }
+
+  const reply = await db.Reply.findOne({
+    where: { id: replyId }
+  });
+
+  if (!reply) {
+    res.status(404);
+    throw new Error("Reply not found");
+  }
+
+  const loggedInUser: UserAttributes | undefined = req.user;
+
+  if (reply.UserId !== loggedInUser?.id) {
+    res.status(401)
+    throw new Error("Not authorized")
+  }
+
+  try {
+    await db.Reply.destroy({
+      where: {
+        id: reply.id
+      }
+    })
+  } catch (err) {
+    res.status(500)
+    throw new Error("Error deleting reply")
+  }
+})
+
+export const replyController = { addReply, getReplies, updateReply, deleteReply };
