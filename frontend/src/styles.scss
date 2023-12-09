@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Product Sans Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Regular"), url("assets/fonts/product-sans/ProductSans-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Thin Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Thin Regular"), url("assets/fonts/product-sans/ProductSans-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Light Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Light Regular"), url("assets/fonts/product-sans/ProductSans-Light.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Medium Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Medium Regular"), url("assets/fonts/product-sans/ProductSans-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Black Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Black Regular"), url("assets/fonts/product-sans/ProductSans-Black.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Thin Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Thin Italic"), url("assets/fonts/product-sans/ProductSans-ThinItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Medium Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Medium Italic"), url("assets/fonts/product-sans/ProductSans-MediumItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Black Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Black Italic"), url("assets/fonts/product-sans/ProductSans-BlackItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+* {
+  font-family: "Product Sans Regular";
+}
