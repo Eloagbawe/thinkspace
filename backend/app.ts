@@ -8,6 +8,7 @@ import passport from 'passport';
 import session from 'express-session';
 import db from './src/models';
 import router from './src/routes'
+import { upload } from './src/middleware/imageUpload';
 
 require ('./src/config/passport');
 
@@ -21,6 +22,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
+app.use(upload);
 
 const connectSequelize = async () => {
   try {
