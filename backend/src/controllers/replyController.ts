@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
 import db from "../models";
 import { UserAttributes } from '../interfaces';
+import { getPageInfo } from '../utils';
 
 const addReply = asyncHandler(async (req: Request, res: Response) => {
   const  { commentId } = req.params;
@@ -42,6 +43,21 @@ const addReply = asyncHandler(async (req: Request, res: Response) => {
 const getReplies = asyncHandler(async (req: Request, res: Response) => {
   const  { commentId } = req.params;
 
+  const { page=1, limit=10 } = req.query;
+
+  const parsedLimit = parseInt(limit as string);
+  const parsedPage = parseInt(page as string);
+
+  if (!parsedPage) {
+    res.status(400)
+    throw new Error('page must be a number')
+  }
+
+  if (!parsedLimit) {
+    res.status(400)
+    throw new Error('limit must be a number')
+  }
+
   if (!commentId) {
     res.status(400);
     throw new Error('Please provide comment id')
@@ -57,15 +73,25 @@ const getReplies = asyncHandler(async (req: Request, res: Response) => {
   }
 
   try {
-    const replies = await db.Reply.findAll({
+    const data = await db.Reply.findAndCountAll({
       where: {
         CommentId: commentId
       },
       include: [
         { model: db.User, attributes: { exclude: ['password']} },
-      ]
+      ],
+      order: [
+        ['createdAt', 'DESC'],
+      ],
+      parsedLimit,
+      offset: ((parsedPage - 1) * parsedLimit)
     })
-    res.status(200).json({success: true, replies});
+
+    const { count, rows } = data
+
+    const pageInfo = getPageInfo(count, parsedLimit, parsedPage)
+
+    res.status(200).json({success: true, replies: rows, pageInfo});
 
   } catch(err) {
     throw new Error('Error fetching replies');
