@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Eloagbawe/thinkspace#readme",
   "dependencies": {
+    "cloudinary": "^1.41.0",
     "colors.ts": "^1.0.20",
     "connect-session-sequelize": "^7.1.7",
     "cors": "^2.8.5",
