@@ -2,7 +2,7 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from 'passport-local';
 import db from "../models";
-import { validPassword } from "../utils/passwordUtils";
+import { passwordUtils } from "../utils";
 import { UserAttributes } from "../interfaces";
 
 const customFields = {
@@ -16,7 +16,7 @@ const verifyCallback = async (email: string, password: string, done: (error: Err
     if (!user){
       return done(null, false, { message: 'User not found' }) ;
     }
-    const passVal = validPassword(password, user.password);
+    const passVal = passwordUtils.validPassword(password, user.password);
     
     if(!passVal){
       return done(null, false, { message: 'Incorrect password' });
