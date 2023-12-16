@@ -8,7 +8,7 @@ import passport from 'passport';
 import session from 'express-session';
 import db from './src/models';
 import router from './src/routes'
-import { upload } from './src/middleware/imageUpload';
+import { cloudinaryConfig } from './src/config/cloudinaryConfig';
 
 require ('./src/config/passport');
 
@@ -16,13 +16,13 @@ require ('./src/config/passport');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 Colors.enable();
+cloudinaryConfig();
 
 const app: Express = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
-app.use(upload);
 
 const connectSequelize = async () => {
   try {
