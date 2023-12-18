@@ -22,7 +22,10 @@ const app: Express = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}));
+app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({
+  origin: process.env.CLIENT_URL,
+  credentials: true
+}));
 
 const connectSequelize = async () => {
   try {
