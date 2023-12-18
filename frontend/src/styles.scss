@@ -64,6 +64,93 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Sf Pro Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Regular"), url("assets/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Medium"), url("assets/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Bold"), url("assets/fonts/sf-pro/SFPRODISPLAYBOLD.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Ultra Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Ultra Light Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYULTRALIGHTITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Light Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYLIGHTITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Thin Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Thin Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYTHINITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Semi Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Semi Bold Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Black Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Black Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYBLACKITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Heavy Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Heavy Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYHEAVYITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+
 * {
-  font-family: "Product Sans Regular";
+  font-family: "Sf Pro Regular", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --bg-main: #f7f7f7;
+}
+
+body.dark_theme {
+  --bg-main: #1d1d1d;
+}
+
+body {
+  background-color: var(--bg-main);
 }
