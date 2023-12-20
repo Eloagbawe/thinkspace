@@ -1,0 +1,36 @@
+.logo-div {
+  img {
+    width: 8rem;
+  }
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-box {
+  input {
+    background-color: transparent;
+    padding: 0.5rem 0.8rem;
+    border-radius: 0.8rem;
+    border: 2px solid var(--border);
+    outline: none;
+    width: 15rem;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+}
+
+.sign-up-btn, .log-in-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-main);
+  font-family: 'Sf Pro Medium';
+}
+.sign-up-btn {
+  margin-right: 1rem;
+}
