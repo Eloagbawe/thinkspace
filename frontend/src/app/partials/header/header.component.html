@@ -1,21 +1,22 @@
-<section class="header-section">
-  <div class="logo-div">
-    <img src="assets/images/logo_light.png"/>
+<section class="header-section display-flex">
+
+  <div class="top-margin display-flex">
+    <img src="assets/images/logo_light.png" class="logo"/>
   </div>
 
-  <div class="nav-links">
-    <a routerLink="/">HOME</a>
-    <a routerLink="/">POPULAR</a>
+  <div class="top-margin nav">
+    <app-nav></app-nav>
   </div>
+ 
 
-  <div class="action-section">
-    <div class="auth-actions">
-      <button class="sign-up-btn">Sign Up</button>
-      <button class="log-in-btn">Log In</button>
-    </div>
-
-    <div class="search-box">
+  <div class="action-section display-flex">
+    <!-- <div class="search-box">
       <input placeholder="search"/>
+    </div> -->
+
+    <div class="auth-actions top-margin">
+      <button class="sign-up-btn">SIGN UP</button>
+      <button class="log-in-btn">LOG IN</button>
     </div>
   </div>
   

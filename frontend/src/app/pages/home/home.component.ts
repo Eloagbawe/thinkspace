@@ -13,9 +13,9 @@ export class HomeComponent {
   private blogService = inject(BlogService)
 
   constructor() {
-    this.blogService.getBlogs().subscribe((res: any) => {
-      console.log(res)
-    })
+    // this.blogService.getBlogs().subscribe((res: any) => {
+    //   console.log(res)
+    // })
   }
 
 }
