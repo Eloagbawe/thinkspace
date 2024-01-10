@@ -1,0 +1,29 @@
+.nav-links {
+  overflow-x: scroll;
+  padding: 0.3rem;
+  scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+
+  a {
+    margin-right: 1rem;
+    font-weight: 100;
+    letter-spacing: 0.22rem;
+    padding: 0.2rem;
+    transition: all ease-in 0.3s;
+    border-bottom: 1px solid transparent;
+    
+    &:hover {
+      color: var(--link-active);
+      border-bottom: 2px solid var(--link-active);
+    }
+  }
+
+  .active {
+    color: #AAAAAA;
+    border-bottom: 2px solid var(--link-active);
+  }
+}
+
