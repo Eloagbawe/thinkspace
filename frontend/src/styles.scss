@@ -147,12 +147,14 @@ body {
   --bg-main: #f7f7f7;
   --text-main: #272829;
   --border: #61677A;
+  --link-active: #AAAAAA;
 }
 
 body.dark_theme {
   --bg-main: #1d1d1d;
   --text-main: #F0F0F0;
   --border: #F0F0F0;
+  --link-active: #AAAAAA;
 }
 
 body {
