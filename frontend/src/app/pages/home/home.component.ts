@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeaderComponent } from '../../partials/header/header.component';
 import { BlogService } from '../../services/blog/blog.service';
-
+import { BlogsComponent } from '../../components/blogs/blogs.component';
+import { SidebarComponent } from '../../partials/sidebar/sidebar.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [BlogsComponent, SidebarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

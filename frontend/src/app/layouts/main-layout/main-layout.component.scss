@@ -1,19 +1,20 @@
-.main-div {
-  padding: 0 2rem;
-}
-
 .page-content {
-  height: 80vh;
   overflow: scroll;
-  margin: 1.5rem 0;
+  scroll-behavior: smooth;
+  padding: 0 2rem;
+  margin-top: 4rem;
 }
 
 .mobile-menu {
   display: none;
+  background-color: var(--bg-main);
 }
 
 @media(max-width: 768px) {
-  .main-div {
+  .page-content {
+    height: 80vh;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
     padding: 0 1rem;
   }
 
@@ -24,8 +25,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 0.5rem;
-    margin: 0.5rem;
+    padding: 1rem;
+    // margin: 0.5rem;
     font-size: 0.6rem;
   }
 }
