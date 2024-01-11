@@ -1,6 +1,7 @@
 .nav-links {
   overflow-x: scroll;
   padding: 0.3rem;
+  background-color: transparent;
   scrollbar-width: none;
     &::-webkit-scrollbar {
       display: none;

@@ -1,0 +1,34 @@
+section {
+  display: none;
+}
+
+@media (min-width: 768px){
+  section {
+    display: block;
+    margin-top: 2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .search-box {
+    font-size: 0.9rem;
+    input {
+      background-color: transparent;
+      padding: 0.5rem 0.8rem;
+      border-radius: 0.8rem;
+      border: 2px solid var(--border);
+      outline: none;
+      width: 18rem;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+  }
+
+  .featured-posts-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-sub);
+    font-family: 'Product Sans Light Regular';
+    letter-spacing: 0.1rem;
+  }
+
+}

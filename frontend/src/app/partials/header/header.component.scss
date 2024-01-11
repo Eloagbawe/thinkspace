@@ -1,5 +1,5 @@
 .top-margin {
-  margin-top: 1.5rem;
+  margin: 1rem 0;
 }
 
 .display-flex {
@@ -15,30 +15,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   color: var(--text-main);
-}
-
-
-// .action-section {
-//   flex-wrap: wrap;
-// }
-
-// .auth-actions {
-//   margin-right: 1rem;
-// }
-
-.search-box {
-  margin-right: 1rem;
-  font-size: 0.9rem;
-  input {
-    background-color: transparent;
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.8rem;
-    border: 1px solid var(--border);
-    outline: none;
-    width: 15rem;
-    font-size: 0.9rem;
-    color: var(--text-main);
-  }
+  width: 90%;
+  position: fixed;
+  top: 0;
+  background-color: var(--bg-header);
+  padding: 0 5%;
+  border-bottom: 1.5px solid var(--border-header);
+  // box-shadow: 0px 0.5px 4px var(--border-header);
 }
 
 .sign-up-btn, .log-in-btn {
@@ -47,6 +30,7 @@
   font-size: 0.9rem;
   color: var(--text-main);
   letter-spacing: 0.05rem;
+  transition: all ease-in 0.5s;
   &:hover {
     color: var(--link-active);
   }
@@ -66,6 +50,9 @@
 }
 
 @media(max-width: 768px) {
+  // .header-section {
+  //   padding-bottom: 3%;
+  // }
   .logo {
     width: 6rem;
   }
