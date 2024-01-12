@@ -6,6 +6,6 @@ section {
 
 @media (max-width: 768px) {
   section {
-    grid-template-columns: 100% 100%;
+    display: block;
   }
 }
