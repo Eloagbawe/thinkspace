@@ -1,0 +1,11 @@
+section {
+  display: grid;
+  grid-template-columns: 65% 30%;
+  gap: 5%;
+}
+
+@media (max-width: 768px) {
+  section {
+    display: block;
+  }
+}
