@@ -1,0 +1,46 @@
+section {
+  margin-top: 2rem;
+}
+
+.blog-post {
+  padding: 1rem 0;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.post {
+  text-align: justify;
+}
+
+.tags {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  color: var(--text-sub);
+  span {
+    margin-right: 0.3rem;
+  }
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--title);
+  font-family: "Product Sans Black Regular";
+}
+
+.post-reactions {
+  display: flex;
+  align-items: center;
+}
+
+.comment-count, .likes-count {
+  margin: 0.5rem 0;
+
+  span {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+  }
+  i {
+    font-size: 0.9rem;
+    margin-right: 1rem;
+  }
+}
