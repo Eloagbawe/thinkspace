@@ -32,6 +32,42 @@ section {
   align-items: center;
 }
 
+.add-comment {
+  margin: 2rem 0 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  textarea {
+    background-color: transparent;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border: 0.5px solid var(--border);
+    border-radius: 10px;
+    min-width: 70%;
+    height: 3rem;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+   padding: 0.3rem 1.5rem;
+   height: 3rem;
+   border: none;
+   background-color: #213555;
+   color: #ffffff;
+   border-radius: 2rem;
+   font-family: "Sf Pro Bold";
+   align-self: self-end;
+   margin-bottom: 1rem;
+   transition: background-color .8s ease-in-out;
+
+   &:hover {
+    background-color: #4F709C;
+   }
+  }
+}
+
 .comment-count, .likes-count {
   margin: 0.5rem 0;
 
