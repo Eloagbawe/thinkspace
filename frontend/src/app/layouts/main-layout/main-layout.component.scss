@@ -3,6 +3,12 @@
   scroll-behavior: smooth;
   padding: 0 2rem;
   margin-top: 4rem;
+
+  section {
+    display: grid;
+    grid-template-columns: 65% 30%;
+    gap: 5%;
+  }
 }
 
 .mobile-menu {
@@ -16,6 +22,9 @@
     margin-top: 3rem;
     margin-bottom: 1.5rem;
     padding: 0 1rem;
+    section {
+      display: block;
+    }
   }
 
   .mobile-menu {

@@ -1,7 +1,14 @@
 <section>
   <app-header></app-header>
     <div class="page-content">
-      <router-outlet></router-outlet>
+      <section>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+        <div>
+          <app-sidebar></app-sidebar>
+        </div>
+      </section>
     </div>
   <div class="mobile-menu">
     <app-nav></app-nav>
