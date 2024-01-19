@@ -45,14 +45,15 @@ section {
     border-radius: 10px;
     min-width: 70%;
     height: 3rem;
+    color: var(--text-main);
     &:focus {
       outline: none;
     }
   }
 
   button {
-   padding: 0.3rem 1.5rem;
-   height: 3rem;
+   padding: 0.3rem 2rem;
+   height: 2.5rem;
    border: none;
    background-color: #213555;
    color: #ffffff;
