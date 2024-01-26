@@ -1,6 +1,5 @@
 /* The Modal (background) */
 .modal {
-  // display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -17,7 +16,7 @@
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  width: 60%;
+  width: 40%;
   border-radius: 1rem;
   position: relative;
 }
@@ -45,4 +44,29 @@ h5 {
   font-size: 1.5rem;
   text-align: center;
   margin: 1rem 0;
+}
+
+.profile-img{
+  display: flex;
+  justify-content: center;
+
+  div {
+    margin: 0.5rem 0;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    background-color: grey;
+  }
+}
+
+@media (max-width: 575px) {
+  .modal-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 60%;
+  }
 }
