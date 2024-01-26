@@ -11,8 +11,12 @@
 
   <div class="action-section display-flex">
     <div class="auth-actions top-margin">
+      <button class="profile-btn"  (click)="openModal()">PROFILE</button>
       <button class="sign-up-btn">SIGN UP</button>
       <button class="log-in-btn">LOG IN</button>
+      <div class="modal-container" [ngClass]="display ? 'modal-open' : ''">
+        <app-profile [closeModal]="closeModal"></app-profile>
+      </div>
     </div>
   </div>
   
