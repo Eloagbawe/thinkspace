@@ -174,3 +174,14 @@ body {
 a, button {
   cursor: pointer;
 }
+
+.modal-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s, opacity .2s ease-in;
+}
+
+.modal-open {
+  opacity: 1;
+  visibility: visible;
+}
