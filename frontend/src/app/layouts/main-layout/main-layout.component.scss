@@ -1,0 +1,41 @@
+.page-content {
+  overflow: scroll;
+  scroll-behavior: smooth;
+  padding: 0 2rem;
+  margin-top: 4rem;
+
+  section {
+    display: grid;
+    grid-template-columns: 65% 30%;
+    gap: 5%;
+  }
+}
+
+.mobile-menu {
+  display: none;
+  background-color: var(--bg-main);
+}
+
+@media(max-width: 768px) {
+  .page-content {
+    height: 80vh;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    section {
+      display: block;
+    }
+  }
+
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    // margin: 0.5rem;
+    font-size: 0.6rem;
+  }
+}

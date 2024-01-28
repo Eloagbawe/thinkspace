@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
 import db from "../models";
-import { genPassword } from '../utils/passwordUtils';
+import { passwordUtils } from '../utils';
 
 const signUp = asyncHandler(async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -18,7 +18,7 @@ const signUp = asyncHandler(async (req: Request, res: Response) => {
   }
 
   try {
-    const hashedPassword = genPassword(password);
+    const hashedPassword = passwordUtils.genPassword(password);
     const user = await db.User.create({username, email, password: hashedPassword});
     req.login(user, (err) => {
       if (err) {

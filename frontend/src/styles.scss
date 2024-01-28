@@ -1,0 +1,187 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: "Product Sans Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Regular"), url("assets/fonts/product-sans/ProductSans-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Thin Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Thin Regular"), url("assets/fonts/product-sans/ProductSans-Thin.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Light Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Light Regular"), url("assets/fonts/product-sans/ProductSans-Light.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Medium Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Medium Regular"), url("assets/fonts/product-sans/ProductSans-Medium.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Black Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Black Regular"), url("assets/fonts/product-sans/ProductSans-Black.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Thin Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Thin Italic"), url("assets/fonts/product-sans/ProductSans-ThinItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Medium Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Medium Italic"), url("assets/fonts/product-sans/ProductSans-MediumItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Product Sans Black Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Product Sans Black Italic"), url("assets/fonts/product-sans/ProductSans-BlackItalic.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Regular"), url("assets/fonts/sf-pro/SFPRODISPLAYREGULAR.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Medium";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Medium"), url("assets/fonts/sf-pro/SFPRODISPLAYMEDIUM.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Bold"), url("assets/fonts/sf-pro/SFPRODISPLAYBOLD.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Ultra Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Ultra Light Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYULTRALIGHTITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Light Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYLIGHTITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Thin Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Thin Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYTHINITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Semi Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Semi Bold Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Black Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Black Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYBLACKITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Heavy Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Sf Pro Heavy Italic"), url("assets/fonts/sf-pro/SFPRODISPLAYHEAVYITALIC.OTF") format("opentype");
+  font-display: swap;
+}
+
+
+* {
+  font-family: "Sf Pro Regular", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  --bg-main: #f7f7f7;
+  --bg-header: #F9F9F9;
+  --text-main: #272829;
+  --text-sub: #45474B;
+  --border: #61677A;
+  --border-header: #f2f2f2;
+  --link-active: #AAAAAA;
+  --title: #445069;
+
+}
+
+body.dark_theme{
+  --bg-main: #1d1d1d;
+  --bg-header: #1d1d1d;
+  --text-main: #EEEEEE;
+  --text-sub:#AAAAAA; 
+  --border: #45474B;
+  --border-header: #45474B;
+  --link-active: #AAAAAA;
+  --title: #EEEEEE;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+a, button {
+  cursor: pointer;
+}
+
+.modal-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s, opacity .2s ease-in;
+}
+
+.modal-open {
+  opacity: 1;
+  visibility: visible;
+}
