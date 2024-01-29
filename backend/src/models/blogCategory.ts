@@ -1,42 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use strict';
 import { Model } from 'sequelize';
-import { BlogAttributes } from '../interfaces';
+import { BlogCategoryAttributes } from '../interfaces';
 
 module.exports = (sequelize: any, DataTypes: any ) => {
-  class Blog extends Model <BlogAttributes> implements BlogAttributes{
+  class BlogCategory extends Model <BlogCategoryAttributes> implements BlogCategoryAttributes{
     id!: string;
-    title!: string;
-    content!: string;
+    name!: string;
 
     static associate(models: any) {
-      Blog.belongsTo(models.User, {
+      BlogCategory.hasMany(models.Blog, {
         onDelete: 'CASCADE'
       })
-      Blog.hasMany(models.Comment, {
-        onDelete: 'CASCADE'
-      })
-      Blog.hasOne(models.BlogCategory)
     }
   }
-  Blog.init({
+  BlogCategory.init({
     id: {
       type: DataTypes.UUID,
       allowNull: false,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    content: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
   }, {
     sequelize,
-    modelName: 'Blog',
+    modelName: 'BlogCategory',
   });
-  return Blog;
+  return BlogCategory;
 };
