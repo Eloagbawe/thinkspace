@@ -15,6 +15,11 @@ export interface BlogAttributes {
   content: string;
 }
 
+export interface BlogCategoryAttributes {
+  id: string;
+  name: string;
+}
+
 export interface CommentAttributes {
   id: string;
   content: string;
