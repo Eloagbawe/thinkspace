@@ -5,7 +5,7 @@ import { UserAttributes } from '../interfaces';
 import { getPageInfo } from '../utils';
 
 const createBlog = asyncHandler(async (req: Request, res: Response) => {
-  const {title, content} = req.body;
+  const { title, content } = req.body;
 
   if (!title || !content) {
     res.status(400)
