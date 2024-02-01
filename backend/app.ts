@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import express, { Express } from 'express';
 import Colors = require('colors.ts');
 import dotenv from 'dotenv';
@@ -6,19 +7,30 @@ import errorHandler from './src/middleware/error';
 import cors from 'cors';
 import passport from 'passport';
 import session from 'express-session';
+import { Server } from "socket.io";
 import db from './src/models';
 import router from './src/routes'
 import { cloudinaryConfig } from './src/config/cloudinaryConfig';
 
 require ('./src/config/passport');
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 Colors.enable();
 cloudinaryConfig();
 
 const app: Express = express();
+``
+const io = new Server(Number(process.env.WS_PORT), { /* options */ });
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+io.on('connect', (socket: any) => {
+  console.log(`⚡: ${socket.id} user just connected`);
+  console.log(typeof(socket))
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+})
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
