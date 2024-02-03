@@ -16,7 +16,9 @@ module.exports = (sequelize: any, DataTypes: any ) => {
       Blog.hasMany(models.Comment, {
         onDelete: 'CASCADE'
       })
-      Blog.hasOne(models.BlogCategory)
+      Blog.belongsTo(models.BlogCategory, {
+        onDelete: 'CASCADE'
+      })
     }
   }
   Blog.init({
@@ -34,6 +36,16 @@ module.exports = (sequelize: any, DataTypes: any ) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // tags: {
+    //   type: DataTypes.STRING,
+    // allowNull: false,
+    // get() {
+    //     return this.getDataValue('tags').split(';')
+    // },
+    // set(val: string[]) {
+    //    this.setDataValue('tags', val.join(';'));
+    // },
+    // }
   }, {
     sequelize,
     modelName: 'Blog',
