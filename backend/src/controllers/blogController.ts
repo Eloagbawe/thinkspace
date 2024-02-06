@@ -5,16 +5,31 @@ import { UserAttributes } from '../interfaces';
 import { getPageInfo } from '../utils';
 
 const createBlog = asyncHandler(async (req: Request, res: Response) => {
-  const { title, content } = req.body;
+  const { title, content, categoryId } = req.body;
 
   if (!title || !content) {
     res.status(400)
     throw new Error('Please provide a title and a content')
   }
 
+  if (!categoryId) {
+    res.status(400)
+    throw new Error("Please provide a blog category")
+  }
+
+  const blogCategory = await db.BlogCategory.findOne({
+    where: { id: categoryId }
+  });
+
+  if (!blogCategory) {
+    res.status(404)
+    throw new Error("Blog category not found")
+  }
+
   try {
     const user: UserAttributes | undefined = req.user;
-    const newBlog = await db.Blog.create({title, content, UserId: user?.id})
+    const newBlog = await db.Blog.create({title, content, UserId: user?.id,
+      BlogCategoryId: blogCategory?.id })
 
     res.status(201).json({success: true, message: 'Blog created successfully', blog: newBlog});
 
@@ -25,6 +40,7 @@ const createBlog = asyncHandler(async (req: Request, res: Response) => {
 })
 
 const getBlogs = asyncHandler(async(req: Request, res: Response) => {
+
   const { page=1, limit=10 } = req.query;
 
   const parsedLimit = parseInt(limit as string);
@@ -131,7 +147,7 @@ const getUserBlogs = asyncHandler(async(req: Request, res: Response) => {
 
 const updateBlog = asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
-  const {title, content} = req.body
+  const { title, content, categoryId } = req.body
 
   if (!id) {
     res.status(400)
@@ -146,6 +162,18 @@ const updateBlog = asyncHandler(async (req: Request, res: Response) => {
     res.status(404)
     throw new Error("Blog not found")
   }
+
+  if (categoryId) {
+    const blogCategory = await db.BlogCategory.findOne({
+      where: { id: categoryId }
+    });
+  
+    if (!blogCategory) {
+      res.status(404)
+      throw new Error("Blog category not found")
+    }
+  }
+
   const loggedInUser: UserAttributes | undefined = req.user;
 
   if (blog.UserId !== loggedInUser?.id) {
@@ -154,7 +182,7 @@ const updateBlog = asyncHandler(async (req: Request, res: Response) => {
   }
 
   try {
-    const fieldsToUpdate = {title, content};
+    const fieldsToUpdate = {title, content, BlogCategoryId: categoryId};
     await db.Blog.update(fieldsToUpdate, {
       where: {
         id: loggedInUser?.id
