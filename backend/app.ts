@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 import express, { Express } from 'express';
+import { createServer } from "http";
+import { Server } from "socket.io";
 import Colors = require('colors.ts');
 import dotenv from 'dotenv';
 dotenv.config();
@@ -10,8 +12,6 @@ import session from 'express-session';
 import db from './src/models';
 import router from './src/routes'
 import { cloudinaryConfig } from './src/config/cloudinaryConfig';
-import './src/config/socket.io';
-
 require ('./src/config/passport');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -20,6 +20,24 @@ Colors.enable();
 cloudinaryConfig();
 
 const app: Express = express();
+
+const httpServer = createServer(app);
+const io = new Server(httpServer, { /* options */ });
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+io.on('connect', (socket: any) => {
+  console.log(`⚡: ${socket.id} user just connected`);
+
+  socket.on('notification', (data: any) => {
+    console.log(data)
+  })
+
+  socket.on('disconnect', () => {
+  });
+})
+
+app.set('io', io);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -77,4 +95,4 @@ app.use('/api/v1/replies', router.replyRouter);
 
 app.use(errorHandler);
 
-export default app;
+export default httpServer;
