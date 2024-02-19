@@ -7,10 +7,11 @@ const signUp = asyncHandler(async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
 
   if (!username || !email || !password) {
-    res.status(400).json({message: "Username, email and password is required"})
+    res.status(400);
+    throw new Error('Username, email and password is required')
   }
 
-  const userExists = await db.User.findOne({where: { email}});
+  const userExists = await db.User.findOne({where: { email }});
 
   if (userExists) {
     res.status(400);
@@ -20,6 +21,7 @@ const signUp = asyncHandler(async (req: Request, res: Response) => {
   try {
     const hashedPassword = passwordUtils.genPassword(password);
     const user = await db.User.create({username, email, password: hashedPassword});
+
     req.login(user, (err) => {
       if (err) {
         res.status(500)
