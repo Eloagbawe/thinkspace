@@ -3,7 +3,7 @@ import { FormControl, ReactiveFormsModule, FormGroup,
   Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth/auth.service';
-import { passwordValidator } from '../../directives/check-passwords/check-passwords.directive';
+import { passwordValidator } from '../../directives/shared/shared.directive';
 @Component({
   selector: 'app-sign-up',
   standalone: true,

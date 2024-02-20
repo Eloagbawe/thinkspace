@@ -1,3 +1,63 @@
-// section {
-//   margin-top: 2rem;
-// }
+.heading {
+  letter-spacing: 0.05rem;
+  font-size: 1.5rem;
+  font-family: "Product Sans Black Regular";
+  margin-top: 2rem;
+  color: var(--text-sub);
+}
+
+.form {
+  margin: 2rem 0;
+}
+.form-input {
+  margin: 1.5rem 0;
+  label {
+    margin-right: 0.5rem;
+    width: 20%;
+    display: inline-block;
+    color: var(--text-sub);
+  }
+  input {
+    width: 50%;
+    color: var(--text-main);
+    padding: 0.5rem;
+    background-color: transparent;
+  }
+}
+
+.border {
+  border: 1.5px solid var(--border);
+  border-radius: 0.2rem;
+  outline: none;
+}
+
+.alert-danger {
+  color: #BF3131;
+  font-size: 0.8rem;
+}
+
+.submit-btn {
+  padding: 0.5rem 2rem;
+  margin: 2rem 0;
+  background-color: #3C486B;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  color: #fdfdfd;
+  font-weight: bold;
+  transition: all .4s ease-in;
+  font-size: 1rem;
+
+  &:hover {
+    opacity: 0.95;
+    padding: 0.55rem 2.1rem;
+  }
+}
+
+@media (max-width: 1400px) {
+  .form-input {
+    label {
+      width: 30%;
+    }
+  }
+}

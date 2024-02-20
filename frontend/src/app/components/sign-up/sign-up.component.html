@@ -1,29 +1,53 @@
 <section>
-  <h3>Create an account</h3>
+  <h3 class="heading">Create Account</h3>
 
-  <form>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form">
 
-    <div>
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username"/>
+    <div class="form-input">
+      <label for="username">Username </label>
+      <input class="border" type="text" name="username" id="username" formControlName="username"/>
+
+      <div *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+      class="alert-danger">
+        <p *ngIf="username?.errors?.['required']">Username is required.</p>
+      </div>
+
+    </div>
+   
+
+    <div class="form-input">
+      <label for="email">Email </label>
+      <input class="border" type="text" name="email" id="email" formControlName="email"/>
+
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+      class="alert-danger">
+        <p *ngIf="email?.errors?.['required']">Email is required.</p>
+      </div>
+  
     </div>
 
-    <div>
-      <label for="email">Email: </label>
-      <input type="text" name="email" id="email"/>
+
+    <div class="form-input">
+      <label for="password">Password </label>
+      <input class="border" type="text" name="password" id="password" formControlName="password"/>
+      
+      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+      class="alert-danger">
+      <p *ngIf="password?.errors?.['required']">Password is required.</p>
     </div>
 
-    <div>
-      <label for="password">Password: </label>
-      <input type="text" name="password" id="password"/>
     </div>
 
-    <div>
-      <label for="confirmPassword">Confirm Password: </label>
-      <input type="text" name="confirmPassword" id="confirmPassword"/>
+    <div class="form-input">
+      <label for="confirmPassword">Confirm Password </label>
+      <input class="border" type="text" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword"/>
+
+      <p *ngIf="confirmPassword?.touched && signUpForm?.errors?.['passwordMismatch']" class="alert-danger">
+        Passwords do not match
+      </p>
     </div>
 
-    <button>Create Account</button>
+    <button class="submit-btn">Create Account</button>
 
   </form>
 </section>
