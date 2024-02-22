@@ -13,7 +13,7 @@
   margin: 1.5rem 0;
   label {
     margin-right: 0.5rem;
-    width: 20%;
+    width: 15%;
     display: inline-block;
     color: var(--text-sub);
   }
@@ -36,9 +36,16 @@
   font-size: 0.8rem;
 }
 
+.submit-div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .submit-btn {
   padding: 0.5rem 2rem;
   margin: 2rem 0;
+  margin-right: 2rem;
   background-color: #3C486B;
   border: none;
   outline: none;
@@ -54,10 +61,30 @@
   }
 }
 
+.ps-format {
+  margin-left: 0.5rem;
+  cursor: pointer;
+  i {
+    animation: slow-display .4s ease-in-out;
+  }
+}
+
+.signup-print {
+  font-size: 0.9rem;
+
+  a {
+    color: #468B97;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 0.1rem;
+  }
+}
+
+
 @media (max-width: 1400px) {
   .form-input {
     label {
-      width: 30%;
+      width: 25%;
     }
   }
 }

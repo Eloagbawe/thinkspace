@@ -1,7 +1,7 @@
 <section>
   <h3 class="heading">Create Account</h3>
 
-  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" class="form">
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit($event)" class="form">
 
     <div class="form-input">
       <label for="username">Username </label>
@@ -29,7 +29,12 @@
 
     <div class="form-input">
       <label for="password">Password </label>
-      <input class="border" type="text" name="password" id="password" formControlName="password"/>
+      <input class="border" [type]="passType" name="password" id="password" formControlName="password"/>
+      <span class="ps-format">
+        <i *ngIf="password?.dirty && !passVisible" class="fa-regular fa-eye" (click)="showPassword()"></i>
+        <i *ngIf="password?.dirty && passVisible" class="fa-regular fa-eye-slash" (click)="hidePassword()"></i>
+      </span>
+      
       
       <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
       class="alert-danger">
@@ -40,14 +45,22 @@
 
     <div class="form-input">
       <label for="confirmPassword">Confirm Password </label>
-      <input class="border" type="text" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword"/>
-
+      <input class="border" [type]="confirmPassType" name="confirmPassword" id="confirmPassword" formControlName="confirmPassword"/>
+      <span class="ps-format">
+        <i *ngIf="confirmPassword?.dirty && !confirmPassVisible" class="fa-regular fa-eye" (click)="showConfirmPassword()"></i>
+        <i *ngIf="confirmPassword?.dirty && confirmPassVisible" class="fa-regular fa-eye-slash" (click)="hideConfirmPassword()"></i>
+      </span>
+      
+      
       <p *ngIf="confirmPassword?.touched && signUpForm?.errors?.['passwordMismatch']" class="alert-danger">
         Passwords do not match
       </p>
     </div>
 
-    <button class="submit-btn">Create Account</button>
+    <div class="submit-div">
+      <button class="submit-btn">Create Account</button>
+      <p class="login-print">Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
 
   </form>
 </section>
