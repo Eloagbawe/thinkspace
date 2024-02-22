@@ -185,3 +185,15 @@ a, button {
   opacity: 1;
   visibility: visible;
 }
+
+@keyframes slow-display {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
