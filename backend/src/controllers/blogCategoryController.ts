@@ -15,6 +15,13 @@ const addCategory = asyncHandler(async(req: Request, res: Response) => {
     throw new Error('Please provide a valid admin key')
   }
 
+  const categoryExists = await db.BlogCategory.findOne({where: { name }});
+
+  if (categoryExists) {
+    res.status(400);
+    throw new Error('Blog Category with the same name already exists')
+  }
+
   try {
     const newCategory = await db.BlogCategory.create({name})
     res.status(201).json({success: true, message: 'Blog category created successfully', category: newCategory})
