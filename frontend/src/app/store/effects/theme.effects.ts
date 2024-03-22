@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ThemeService } from '../../services/theme/theme.service';
-import { addDarkTheme, addLightTheme, getTheme } from '../actions/theme.actions';
-import { catchError, exhaustMap, map, throwError } from 'rxjs';
+import { addDarkThemeStart, addDarkThemeSuccess, addLightThemeStart,
+  addLightThemeSuccess, getThemeStart, getThemeSuccess } from '../actions/theme.actions';
+import { map } from 'rxjs';
 
 @Injectable()
 export class ThemeEffects {
@@ -12,26 +13,26 @@ export class ThemeEffects {
   ) {}
 
   addDarkTheme$ = createEffect(() => this.actions$.pipe(
-    ofType(addDarkTheme),
+    ofType(addDarkThemeStart),
     map(() => {
       this.themeService.addDarkTheme();
-      return addDarkTheme({theme: 'dark'})
+      return addDarkThemeSuccess();
     }),
   ))
 
   addLightTheme$ = createEffect(() => this.actions$.pipe(
-    ofType(addLightTheme),
+    ofType(addLightThemeStart),
     map(() => {
       this.themeService.addLightTheme();
-      return addDarkTheme({theme: 'light'})
+      return addLightThemeSuccess()
     }),
   ))
   
   getTheme$ = createEffect(() => this.actions$.pipe(
-    ofType(getTheme),
+    ofType(getThemeStart),
     map(() => {
       const theme = this.themeService.getTheme();
-      return getTheme({ theme });
+      return getThemeSuccess({ theme });
     })
   ));
 }
